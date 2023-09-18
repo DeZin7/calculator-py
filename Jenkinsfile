@@ -17,3 +17,7 @@ pipeline {
             sh 'python test_calculator.py -v'
           }
         }
+      }
+    }
+  }
+}
