@@ -1,11 +1,14 @@
 pipeline {
   agent any
+  triggers {
+    pollSCM ('* * * * *')
+  }
   stages {
-    stage('error') {
+    stage('Checkout') {
       parallel {
-        stage('error') {
+        stage('Checkout') {
           steps {
-            git(url: 'https://github.com/DeZin7/calculator-py.git', branch: 'master')
+            git(url: 'https://github.com/DeZin7/calculator-py.git', branch: 'main')
           }
         }
 
@@ -14,9 +17,3 @@ pipeline {
             sh 'python test_calculator.py -v'
           }
         }
-
-      }
-    }
-
-  }
-}
